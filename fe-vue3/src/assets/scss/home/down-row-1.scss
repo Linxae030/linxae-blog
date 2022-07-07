@@ -1,0 +1,119 @@
+.row-1 {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	height: 1500px;
+	padding-top: 50px;
+	.links {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 400px;
+		.social-links {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			@include square(400px);
+			height: 250px;
+			padding: 30px;
+			background-color: rgb(120, 140, 200);
+			border-radius: 25px;
+			box-shadow: $base_shadow;
+			li {
+				@include flex-center();
+				@include square(70px);
+				border-radius: 30px;
+				background-color: pink;
+			}
+		}
+		.friend-links {
+			display: flex;
+			width: 400px;
+			height: 130px;
+			background-color: rgb(120, 140, 200);
+			border-radius: 25px;
+			box-shadow: $base_shadow;
+			@include flex-center();
+			font-size: 26px;
+		}
+	}
+	.card-container {
+		position: relative;
+		width: 750px;
+		height: 400px;
+		background-color: rgba($color: #fff, $alpha: 0.3);
+		border: #fff 10px solid;
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow: $base_shadow;
+		.card-content {
+			position: absolute;
+			left: 0;
+			width: 230px;
+			height: 300px;
+			margin: 75px;
+			transition: 0.8s;
+			color: black;
+			a {
+				text-decoration: none;
+				font: 900 28px "";
+			}
+			h2 {
+				/* 鼠标放开时的动画，第一个值是动画的过渡时间
+        第二个值是延迟一秒后执行动画 */
+				transition: 0.6s 0.8s;
+				opacity: 0;
+				color: rgb(30, 210, 200);
+			}
+			span {
+				position: absolute;
+				top: 100px;
+				transition: 0.6s 0.8s;
+				font: 500 18px "";
+			}
+		}
+		.card-pic {
+			position: absolute;
+			top: calc(50% - 125px);
+			right: 50px;
+			transition: 0.6s 0.6s;
+			img {
+				@include square(250px);
+			}
+		}
+		.card-extend-pic {
+			@include square(250px);
+			position: absolute;
+			background-image: url("../../assets/img/home/咖波.jpg");
+			background-size: cover;
+			margin: 70px;
+			opacity: 0;
+			transition: 0.8s;
+		}
+	}
+	.card-container:hover {
+		.card-content {
+			transition: 0.6s 0.5s;
+			left: 370px;
+			span {
+				transition: 0.8s 0.6s;
+				top: 105px;
+			}
+			h2 {
+				transition: 0.8s 0.6s;
+				opacity: 1;
+			}
+		}
+		.card-pic {
+			/* 设置延迟动画 */
+			transition: 0.8s;
+			/* 移动的轨迹 */
+			transform: translateX(400px);
+		}
+		.card-extend-pic {
+			transition: 1s 1s;
+			opacity: 1;
+		}
+	}
+}

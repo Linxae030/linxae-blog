@@ -1,0 +1,12 @@
+$base_shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+//定义flex-center
+@mixin flex-center() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+//定义构造正方形
+@mixin square($sideLen) {
+	width: $sideLen;
+	height: $sideLen;
+}
