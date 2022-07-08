@@ -1,0 +1,154 @@
+.my-card {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	padding-top: 50px;
+	.music-player {
+		@include flex-center();
+		width: 400px;
+		height: 400px;
+		background-color: rgba($color: #fff, $alpha: 0.6);
+		border-radius: 25px;
+		box-shadow: $base_shadow;
+		font-size: 26px;
+	}
+	.card-container {
+		@include flex-center();
+		width: 750px;
+		height: 400px;
+		background-color: rgba($color: #fff, $alpha: 0.6);
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow: $base_shadow;
+		.card-personal {
+			@include flex-center();
+			flex-direction: column;
+			width: 50%;
+			padding-right: 20px;
+			h1 {
+				font-size: 30px;
+				color: black;
+			}
+			.card-avatar {
+				@include square(120px);
+				border-radius: 60px;
+				overflow: hidden;
+				img {
+					@include square(120px);
+				}
+			}
+			.card-statistics {
+				@include flex-center();
+				justify-content: space-evenly;
+				width: 230px;
+				padding: 8px;
+				li {
+					@include flex-center();
+					@include square(50px);
+					flex-direction: column;
+					padding: 5px;
+					font-size: 15px;
+					cursor: pointer;
+					.num {
+						font-weight: 700;
+						padding: 10px;
+						color: rgb(66, 170, 237);
+					}
+					.tag {
+						font-weight: 700;
+						color: black;
+					}
+				}
+			}
+			.card-social-links {
+				@include flex-center();
+				justify-content: center;
+				flex-wrap: wrap;
+				width: 250px;
+				li {
+					@include flex-center();
+					@include square(50px);
+					margin: 8px;
+					font-size: 28px;
+					border-radius: 25px;
+					background-color: rgb(221, 237, 238);
+					cursor: pointer;
+				}
+			}
+		}
+		.card-friends-notice {
+			width: 50%;
+			margin-right: 8px;
+			.friend-links-title {
+				@include flex-center();
+				font-size: 21px;
+				color: black;
+				font-weight: 700;
+				img {
+					@include square(30px);
+				}
+			}
+			.card-friend-links {
+				@include flex-center();
+				flex-direction: column;
+				height: 125px;
+				border-radius: 30px;
+				overflow: auto;
+				cursor: pointer;
+				.friend-list {
+					margin-left: 170px;
+					@include flex-center();
+					.friend-item {
+						@include flex-center();
+						flex-direction: column;
+						padding: 12px;
+						.avatar {
+							@include square(70px);
+							border-radius: 35px;
+						}
+						.id {
+							color: rgb(66, 170, 237);
+							font: {
+								size: 16px;
+								weight: 400;
+							}
+						}
+					}
+				}
+			}
+			.card-notice {
+				height: 200px;
+				margin-top: 10px;
+				.card-notice-title {
+					@include flex-center();
+					font-size: 24px;
+					color: black;
+					font-weight: 700;
+					img {
+						@include square(30px);
+					}
+				}
+				.card-notice-content {
+					font-size: 16px;
+					color: black;
+					font-size: 700;
+					.content {
+					}
+				}
+			}
+		}
+	}
+}
+.card-friend-links::-webkit-scrollbar {
+	position: absolute;
+	width: 3px;
+	height: 5px;
+	border-radius: 3px;
+	background-color: white;
+}
+.card-friend-links::-webkit-scrollbar-thumb {
+	width: 3px;
+	height: 3px;
+	border-radius: 3px;
+	background-color: rgba(66, 170, 237, 0.7);
+}

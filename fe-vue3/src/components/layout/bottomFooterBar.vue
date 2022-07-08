@@ -10,15 +10,11 @@
             >
                 蜀ICP备2022014161号
             </a>
-            <div class="star" v-for="item in starCount"></div>
         </div>
     </footer>
 </template>
 
 <script lang="ts" setup>
-import useStarBc from "../../hooks/footer/useStarBc";
-
-let starCount = useStarBc();
 </script>
 
 <style lang="scss">

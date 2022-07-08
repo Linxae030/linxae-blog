@@ -1,7 +1,10 @@
 import { onMounted, ref } from "vue";
+import { useStore } from "vuex";
 export default function () {
 	let showDownMain = ref(false);
 	let showScene = ref(true);
+	let store = useStore();
+	store.state.isShowFooter = false;
 	function handleClick() {
 		showDownMain.value = true
 		setTimeout(() => {
@@ -12,7 +15,8 @@ export default function () {
 		}, 10)
 		setTimeout(() => {
 			showScene.value = false
-		}, 600)
+			store.state.isShowFooter = true;
+		}, 680)
 	}
 	return { showDownMain, showScene, handleClick };
 }

@@ -3,7 +3,7 @@
         <div class="logo">Explore.</div>
         <div class="nav-links">
             <ul>
-                <li>
+                <li @click="$router.go(0)">
                     <img src="../../assets/img/home//linkedin.png" alt="" />
                     首页
                 </li>
@@ -52,22 +52,24 @@ export default {};
 nav {
     position: fixed;
     z-index: 100;
-    height: 8vh;
+    height: 30px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background-color: black;
+    background-color: rgba($color: black, $alpha: 0.7);
     color: white;
     backdrop-filter: blur(50px);
-
     .nav-links {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
         ul {
             display: flex;
             flex-direction: row;
+            align-items: center;
             li {
-                padding: 0 4px;
                 list-style: none;
                 width: 90px;
                 display: flex;
