@@ -42,14 +42,18 @@
 </template>
 <script lang="ts">
 import { DownCircleOutlined } from "@ant-design/icons-vue";
+
 import useType from "../../hooks/home/useType";
 import useDown from "../../hooks/home/useDown";
 import useParallax from "../../hooks/home/useParallax";
+import useFooter from "../../hooks/home/useFooter";
 import DownMain from "./downMain.vue";
 export default {
     name: "home",
     components: { DownMain, DownCircleOutlined },
     setup() {
+        //切换footer是否显示
+        let footer = useFooter();
         //视差动画
         let parallax = useParallax();
         //轮播文字
