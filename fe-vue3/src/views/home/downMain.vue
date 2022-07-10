@@ -2,139 +2,10 @@
     <div class="wrap">
         <div class="down-main">
             <div class="my-card w">
-                <div class="card-container">
-                    <div class="card-personal">
-                        <h1>Linxaeの妙妙屋</h1>
-                        <div class="card-avatar">
-                            <img
-                                src="../../assets/img/home/avatar.jpg"
-                                alt=""
-                            />
-                        </div>
-                        <ul class="card-statistics">
-                            <li class="articles-num">
-                                <span class="num">114</span>
-                                <span class="tag">文章</span>
-                            </li>
-                            <li class="pic-num">
-                                <span class="num">114</span>
-                                <span class="tag">图片</span>
-                            </li>
-                            <li class="note-num">
-                                <span class="num">114</span>
-                                <span class="tag">笔记</span>
-                            </li>
-                        </ul>
-                        <div class="card-social-links">
-                            <li
-                                class="iconfont icon-QQ"
-                                style="color: rgb(66, 170, 237)"
-                            ></li>
-                            <li
-                                class="iconfont icon-weixin1"
-                                style="color: rgb(63, 168, 0)"
-                            ></li>
-                            <li>
-                                <img
-                                    src="../../assets/iconfont/网易云音乐.png"
-                                    alt=""
-                                    style="width: 40px; height: 40px"
-                                />
-                            </li>
-                            <li
-                                class="iconfont icon-bilibili"
-                                style="color: rgb(66, 170, 237)"
-                            ></li>
-                            <li
-                                class="iconfont icon-github"
-                                style="color: black"
-                            ></li>
-                            <li>
-                                <img
-                                    src="../../assets/iconfont/steam.png"
-                                    alt=""
-                                    style="width: 32px; height: 32px"
-                                />
-                            </li>
-                        </div>
-                    </div>
-                    <el-divider direction="vertical"></el-divider>
-                    <div class="card-friends-notice">
-                        <div class="friend-links-title">
-                            <img src="../../assets/iconfont/链接.png" alt="" />
-                            <span class="links-title-content">友链</span>
-                        </div>
-                        <div class="card-friend-links">
-                            <ul class="friend-list">
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/iconfont/hch.png"
-                                        alt=""
-                                    />
-                                    <h1 class="id">hch</h1>
-                                </li>
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/iconfont/hch.png"
-                                        alt=""
-                                    />
-                                    <h1 class="id">hch</h1>
-                                </li>
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/img/home/avatar.jpg"
-                                        alt=""
-                                    />
-                                    <h1 class="id">Linxae</h1>
-                                </li>
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/img/home/avatar.jpg"
-                                        alt=""
-                                    />
-                                    <h1 class="id">Linxae</h1>
-                                </li>
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/img/home/avatar.jpg"
-                                        alt=""
-                                    />
-                                    <h1 class="id">Linxae</h1>
-                                </li>
-                                <li class="friend-item">
-                                    <img
-                                        class="avatar"
-                                        src="../../assets/img/home/avatar.jpg"
-                                        alt=""
-                                    />
-                                    <h1 class="id">Linxae</h1>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-notice">
-                            <div class="card-notice-title">
-                                <img
-                                    src="../../assets/iconfont/喇叭.png"
-                                    alt=""
-                                />
-                                <span class="title-content"
-                                    >伟大的Linxae如是说道...</span
-                                >
-                            </div>
-                            <div class="card-notice-content">
-                                <span class="notice-content"
-                                    >伟大的Linxae如是说道...</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="music-player">音乐播放器</div>
+                <!-- 个人信息公告栏 -->
+                <myCard />
+                <!--  -->
+                <musicPlayer />
             </div>
             <div class="art-side-bar w">
                 <ul class="articles-area">
@@ -236,15 +107,17 @@
 
 <script lang="ts" scoped>
 import { QqCircleFilled } from "@ant-design/icons-vue";
+import musicPlayer from "@/views/home/component/musicPlayer.vue";
+import myCard from "@/views/home/component/myCard.vue";
 export default {
-    components: { QqCircleFilled },
+    components: { QqCircleFilled, musicPlayer, myCard },
+    setup() {},
 };
 </script>
 
 <style lang="scss" scoped>
 // 引入全局变量及mixin
 @import "../../assets/scss/global.scss";
-@import "../../assets/scss/home/down-mycard.scss";
 @import "../../assets/scss/home/down-articles.scss";
 .down-main {
     position: relative;
@@ -253,6 +126,12 @@ export default {
     align-items: center;
     height: 2000px;
     margin-top: 20px;
+}
+.my-card {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 50px;
 }
 .el-divider--vertical {
     background-color: black;

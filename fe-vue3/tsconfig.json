@@ -24,7 +24,9 @@
 		"src/**/*.vue",
 		"tests/**/*.ts",
 		"tests/**/*.tsx",
-		"src/hooks/footer/useStarBc.js"
-, "src/hooks/home/useDown.js"	],
+		"src/hooks/footer/useStarBc.js",
+		"src/hooks/home/useDown.js",
+		"src/hooks/home/useMusicController.js"
+	],
 	"exclude": ["node_modules"]
 }
