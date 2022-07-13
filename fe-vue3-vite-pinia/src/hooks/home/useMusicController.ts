@@ -68,7 +68,7 @@ export default function () {
 	//更新进度条滚动
 	function updateProgressRoll() {
 		let curObj = curMusicInfo.value.lyric.find((item) => {
-			return Math.trunc(item.time) == audio.currentDuration
+			return Math.round(item.time) == audio.currentDuration
 		})
 		if (curObj)
 			curMusicInfo.value.curLyricIndex = curObj.index

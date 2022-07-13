@@ -158,23 +158,29 @@
 			transition: 0.5s linear;
 			.line {
 				text-align: center;
-				width: 350px;
-				font-size: 16px;
-				margin: 11px;
+				height: 45px;
+				width: 390px;
+				font-size: 12px;
+				margin: 5px;
 				.transLyricStr {
-					font-size: 14px;
+					font-size: 10px;
 				}
 			}
 			.curLine {
-				font-size: 19px;
+				font-size: 14px;
 				color: black;
 				.transLyricStr {
-					font-size: 16px;
+					font-size: 12px;
 				}
+			}
+			.now {
+				position: relative;
+				width: 10px;
+				height: 100%;
+				background-color: red;
 			}
 		}
 	}
-
 	.music-list {
 		height: 300px;
 		margin-bottom: 10px;
@@ -194,8 +200,11 @@
 				@include flex-center();
 				height: 100%;
 				.block {
-					height: 100%;
-					width: 4px;
+					position: absolute;
+					left: 5px;
+					height: 80%;
+					width: 5px;
+					background-color: rgb(122, 195, 242);
 				}
 				.index {
 					margin: 0 10px;

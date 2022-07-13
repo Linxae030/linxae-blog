@@ -55,7 +55,6 @@ export default function () {
         let res = await getLyric(id)
         let lyric = res.data.lrc.lyric
         let transLyric
-        console.log('res.data.tlyric.lyric', res.data.tlyric)
         if (res.data.tlyric)
             transLyric = res.data.tlyric.lyric
         return handleLyric(lyric, transLyric)
@@ -63,30 +62,39 @@ export default function () {
     }
     //处理歌词
     function handleLyric(lyric: string, cnLyric: string = '') {
-        console.log('.. ', cnLyric)
         //匹配时间
         let regTime = /\[(\d{2}:\d{2})\.\d{2,3}\](.+)/;
         //歌词单行数组
         let lines = lyric.split('\n')
         let transLines = cnLyric.split('\n')
         let lyricArr: lyricType[] = []
+        //如无歌词则返回纯音乐
         if (lines.length === 1) {
             let obj = {
-                time: 0, lyricStr: "纯音乐，请欣赏", cnLyricStr: "", index: 0
+                time: 0, lyricStr: "纯音乐，请欣赏", transLyricStr: "", index: 0
             }
             lyricArr.push(obj)
             return lyricArr
         }
-        console.log('lyricArr', lyricArr)
         let linesArr = createArr(lines, true)
         let transLinesArr = createArr(transLines, false)
-        let obj = linesArr[0]
-        lyricArr.push(obj)
-        for (let i = 1, j = 0; i < linesArr.length; i++, j++) {
-            let obj = Object.assign(linesArr[i], transLinesArr[j])
-            lyricArr.push(obj)
+        console.log('linesArr', linesArr)
+        console.log('transLinesArr', transLinesArr)
+        for (let i = 0; i < linesArr.length; i++) {
+            let transObj = transLinesArr.find(item => {
+                return item.time === linesArr[i].time
+            })
+            if (transObj) {
+                let obj = { ...linesArr[i], transLyricStr: transObj.transLyricStr }
+                lyricArr.push(obj)
+            } else {
+                let obj = { ...linesArr[i], transLyricStr: "" }
+                lyricArr.push(obj)
+            }
         }
+        console.log('lyricArr', lyricArr)
         return lyricArr
+        //格式化时间
         function formatLyricTime(time: string) {
             const regMin = /.*:/
             const regSec = /:.*\./
@@ -99,6 +107,7 @@ export default function () {
             }
             return Number(sec + '.' + ms)
         }
+        //创建歌词对象数组
         function createArr(lines: string[], flag: boolean) {
             let lyricsObjArr: lyricType[] = [];
             if (flag) {
@@ -117,7 +126,7 @@ export default function () {
                     }
                 });
             } else {
-                let index = 1;
+                let index = 0;
                 lines.forEach(item => {
                     if (item === "") return
                     const timeRegRes = item.match(regTime)

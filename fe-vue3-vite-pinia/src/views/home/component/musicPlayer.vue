@@ -93,7 +93,11 @@
                 @click="selectMusicById(item.id, item.index)"
             >
                 <div class="part-1">
-                    <div class="block"></div>
+                    <div
+                        :class="
+                            item.index === curMusicInfo.index ? 'block' : ''
+                        "
+                    ></div>
                     <div class="index">{{ index + 1 }}</div>
                     <div class="title">
                         {{ item.name }}

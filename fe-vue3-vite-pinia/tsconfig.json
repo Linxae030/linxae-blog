@@ -13,6 +13,7 @@
 		"esModuleInterop": true,
 		"lib": ["esnext", "dom", "dom.iterable", "scripthost"],
 		"skipLibCheck": true,
+		"noImplicitAny": true,
 		"paths": {
 			"@/*": ["src/*"]
 		}
