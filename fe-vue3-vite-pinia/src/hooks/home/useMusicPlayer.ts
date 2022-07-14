@@ -78,8 +78,6 @@ export default function () {
         }
         let linesArr = createArr(lines, true)
         let transLinesArr = createArr(transLines, false)
-        console.log('linesArr', linesArr)
-        console.log('transLinesArr', transLinesArr)
         for (let i = 0; i < linesArr.length; i++) {
             let transObj = transLinesArr.find(item => {
                 return item.time === linesArr[i].time
@@ -92,7 +90,6 @@ export default function () {
                 lyricArr.push(obj)
             }
         }
-        console.log('lyricArr', lyricArr)
         return lyricArr
         //格式化时间
         function formatLyricTime(time: string) {
@@ -163,6 +160,7 @@ export default function () {
     onMounted(async () => {
         //获取登录状态
         let data = await getLoginState()
+        console.log('data', data)
         if (data.data.data.code !== 200 || !localStorage.getItem('cookie')) {
             let loginRes = await loginByPhone(account, pwd)
             let obj = {

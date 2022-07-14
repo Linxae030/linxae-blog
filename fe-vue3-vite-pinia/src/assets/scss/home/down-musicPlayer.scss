@@ -3,7 +3,7 @@
 	@include flex-center();
 	flex-direction: column;
 	@include square(400px);
-	height: 700px;
+	height: 640px;
 	position: relative;
 	background-color: rgba($color: #fff, $alpha: 0.6);
 	border-radius: 25px;
@@ -160,17 +160,19 @@
 				text-align: center;
 				height: 45px;
 				width: 390px;
-				font-size: 12px;
+				font-size: 14px;
 				margin: 5px;
 				.transLyricStr {
-					font-size: 10px;
+					font-size: 12px;
 				}
 			}
 			.curLine {
-				font-size: 14px;
+				font-size: 16px;
 				color: black;
+				font-weight: 700;
+				margin: 30px;
 				.transLyricStr {
-					font-size: 12px;
+					font-size: 14px;
 				}
 			}
 			.now {
@@ -195,7 +197,7 @@
 			font-size: 14px;
 			padding: 5px;
 			box-sizing: border-box;
-			border-bottom: 1px solid rgb(122, 195, 242);
+			transition: 0.3s all linear;
 			.part-1 {
 				@include flex-center();
 				height: 100%;
@@ -227,11 +229,15 @@
 				white-space: nowrap;
 				margin: 0 15px;
 			}
-			.el-divider {
-				position: absolute;
-				top: 3px;
-				background-color: rgb(122, 195, 242);
+			&:nth-child(2n + 1) {
+				background-color: rgba(0, 0, 0, 0.05);
 			}
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+		}
+		.current {
+			background-color: rgba(0, 0, 0, 0.2) !important;
 		}
 		&::-webkit-scrollbar {
 			position: absolute;

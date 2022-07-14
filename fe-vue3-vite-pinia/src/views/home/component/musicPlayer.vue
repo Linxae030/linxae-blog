@@ -88,16 +88,15 @@
 
         <ul class="music-list">
             <li
-                class="music-item"
+                :class="
+                    item.index === curMusicInfo.index
+                        ? 'music-item current'
+                        : 'music-item'
+                "
                 v-for="(item, index) in MusicList"
                 @click="selectMusicById(item.id, item.index)"
             >
                 <div class="part-1">
-                    <div
-                        :class="
-                            item.index === curMusicInfo.index ? 'block' : ''
-                        "
-                    ></div>
                     <div class="index">{{ index + 1 }}</div>
                     <div class="title">
                         {{ item.name }}

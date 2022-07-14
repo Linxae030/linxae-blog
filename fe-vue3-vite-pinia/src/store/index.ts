@@ -23,7 +23,7 @@ export const useMainStore = defineStore('main', {
 	//封装计算属性computed
 	getters: {
 		lyricTranslateYStr(state) {
-			return `transform: translateY(${95 - state.curMusicInfo.curLyricIndex * 55}px)`
+			return `transform: translateY(${62 - state.curMusicInfo.curLyricIndex * 55}px)`
 		},
 
 	},
