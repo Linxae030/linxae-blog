@@ -4,7 +4,7 @@ export default function () {
         index: 1,
         icon: "HomeFilled",
         title: "主页",
-        path: ''
+        path: '/'
     }, {
         index: 2,
         icon: "Document",

@@ -5,3 +5,12 @@ export interface sideNavBarItem {
     path: string;
     children?: Array<sideNavBarItem>;
 }
+export interface category {
+    id: number;
+    name: string;
+}
+
+export interface tag {
+    id: number;
+    name: string;
+}
