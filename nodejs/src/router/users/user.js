@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // 导入用户路由处理函数对应的模块
-const user_handler = require("../../router-handler/users/user");
+const user_handler = require("../../router-handler/users/user_handler");
 
 //注册
 router.post("/register", user_handler.regUser);

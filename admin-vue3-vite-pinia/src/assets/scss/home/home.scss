@@ -8,8 +8,9 @@
 	}
 	.main-content-container {
 		position: relative;
-		width: 100%;
+		width: calc(100% - 210px);
 		height: 100%;
+		overflow: hidden;
 		.top-nav-bar {
 			position: relative;
 			height: 55px;

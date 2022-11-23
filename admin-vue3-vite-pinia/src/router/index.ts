@@ -5,10 +5,38 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'home',
 		path: '/',
 		component: () => import('../views/home/home.vue'),
+		meta: {
+			title: '首页'
+		},
 		children: [{
 			name: 'articlesPost',
 			path: 'articlesPost',
+			meta: {
+				title: '文章发布'
+			},
 			component: () => import('../views/articles/articlesPost.vue'),
+		},
+		{
+			name: 'articlesList',
+			path: 'articlesList',
+			meta: {
+				title: '文章列表'
+			},
+			component: () => import('../views/articles/articlesList.vue'),
+		}, {
+			name: 'tagManage',
+			path: 'tagManage',
+			meta: {
+				title: '标签管理'
+			},
+			component: () => import('../views/articles/tagManage.vue'),
+		}, {
+			name: 'sortManage',
+			path: 'sortManage',
+			meta: {
+				title: '分类管理'
+			},
+			component: () => import('../views/articles/sortManage.vue'),
 		}]
 	}, {
 		name: 'login',

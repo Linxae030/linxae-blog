@@ -2,12 +2,12 @@
     <div class="top-nav-bar-container">
         <div class="breadcrumb">
             <el-breadcrumb :separator-icon="ArrowRight">
-                <el-breadcrumb-item :to="{ path: '/' }"
-                    >主页</el-breadcrumb-item
+                <el-breadcrumb-item
+                    v-for="item in list"
+                    :to="{ path: item.path }"
+                    :key="item.path"
+                    ><span>{{ item.meta.title }}</span></el-breadcrumb-item
                 >
-                <el-breadcrumb-item>文章管理</el-breadcrumb-item>
-                <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-                <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="logout">
@@ -20,7 +20,10 @@
 import { ArrowRight } from "@element-plus/icons-vue";
 import { toRefs } from "vue";
 import useLogin from "@/hooks/login/useLogin";
+import useTopNavBar from "@/hooks/home/useTopNavBar";
 const login = useLogin();
+const topNavBar = useTopNavBar();
+let { list } = topNavBar;
 let { handleLogout } = login;
 </script>
 
@@ -28,7 +31,7 @@ let { handleLogout } = login;
 @import "@/assets/scss/global.scss";
 .top-nav-bar-container {
     position: fixed;
-    z-index: 999;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;

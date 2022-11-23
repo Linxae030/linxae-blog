@@ -37,6 +37,8 @@ export default function () {
             localStorage.setItem('token', data.token)
             // @ts-ignore
             localStorage.setItem('username', data.username)
+            // @ts-ignore
+            localStorage.setItem('id', data.id)
             ElMessage({
                 // @ts-ignore
                 message: data.message,

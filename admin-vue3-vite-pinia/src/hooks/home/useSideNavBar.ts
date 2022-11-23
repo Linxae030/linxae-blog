@@ -1,6 +1,8 @@
 import { sideNavBarItem } from '../../assets/ts/myInterface';
+import { useRouter } from 'vue-router'
+import { onMounted, ref, toRaw } from 'vue';
 export default function () {
-    let list: sideNavBarItem[] = [{
+    let itemList: sideNavBarItem[] = [{
         index: 1,
         icon: "HomeFilled",
         title: "主页",
@@ -14,23 +16,29 @@ export default function () {
             index: 1,
             icon: "DocumentAdd",
             title: "文章发布",
-            path: 'articlesPost'
+            path: '/articlesPost'
         }, {
             index: 2,
             icon: "DocumentChecked",
             title: "文章列表",
-            path: ''
+            path: '/articlesList'
         }, {
             index: 3,
             icon: "PriceTag",
             title: "标签管理",
-            path: ''
+            path: '/tagManage'
         }, {
             index: 4,
             icon: "Menu",
             title: "分类管理",
-            path: ''
+            path: '/sortManage'
         }]
     }]
-    return list
+    let curActive = ref('')
+    const router = useRouter()
+    onMounted(() => {
+        // @ts-ignore
+        curActive.value = router.currentRoute.value.path
+    })
+    return { itemList, curActive }
 }

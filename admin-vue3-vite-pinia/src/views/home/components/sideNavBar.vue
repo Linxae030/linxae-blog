@@ -6,7 +6,9 @@
                     active-text-color="#ffd04b"
                     background-color="#545c64"
                     class="el-menu-vertical"
-                    default-active="2"
+                    :default-active="curActive"
+                    :default-openeds="[curActive]"
+                    :unique-opened="true"
                     text-color="#fff"
                     @open="handleOpen"
                     @close="handleClose"
@@ -22,9 +24,13 @@
 <script lang="ts" setup>
 import useSideNavBar from "@/hooks/home/useSideNavBar";
 import MenuList from "./menuList.vue";
+import { toRef } from "vue";
 import router from "../../../router/index";
-let itemList = useSideNavBar();
-function handleOpen() {}
+let sideNavBar = useSideNavBar();
+let { itemList, curActive } = sideNavBar;
+function handleOpen() {
+    console.log("curActive", curActive);
+}
 function handleClose() {}
 </script>
 

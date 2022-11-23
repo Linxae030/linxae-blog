@@ -1,18 +1,20 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { createPinia } from 'pinia'
-//引入element Plus
-import ElementPlus from 'element-plus'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import 'element-plus/dist/index.css'
-//初始化样式
-import './assets/css/reset.css'
-import './assets/css/hover-min.css'
-//全局样
-const app = createApp(App)
-const pinia = createPinia()
-app.use(router).use(pinia).use(ElementPlus).mount('#app')
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
-}
+
+import { defineStore } from 'pinia'
+//定义容器
+export const useMainStore = defineStore('main', {
+    //存贮全局状态
+    state: () => {
+        return {
+            //控制footer是否展示(主要用在首屏不展示)
+            isShowFooter: false, //false
+
+        }
+    },
+    //封装计算属性computed
+    getters: {
+
+    },
+    //封装业务逻辑
+    actions: {
+    }
+})

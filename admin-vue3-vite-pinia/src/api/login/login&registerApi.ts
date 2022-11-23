@@ -1,4 +1,5 @@
-import request_form from '@/config/axios/config';
+import request_form from '@/config/axios/configReqForm';
+
 
 export function login(account: string, password: string) {
     return request_form.post('/api/login', { username: account, password: password },)
