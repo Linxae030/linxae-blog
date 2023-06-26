@@ -14,7 +14,7 @@ exports.getTags = (req, res) => {
 		res.send({
 			status: 0,
 			message: "获取成功",
-			tags: result,
+			fileList: result,
 		});
 	});
 };
@@ -96,8 +96,7 @@ exports.updateTag = (req, res) => {
 //根据id获取标签
 exports.getTagsById = (req, res) => {
 	let id = req.query.id;
-	const sql =
-		"SELECT id,tag_name FROM tb_tag where id =any(SELECT tag_id FROM tb_article_tag WHERE article_id = ?)";
+	const sql = "SELECT id,tag_name FROM tb_tag where id =any(SELECT tag_id FROM tb_article_tag WHERE article_id = ?)";
 	db.query(sql, [id], (err, result) => {
 		if (err) return res.cc(err);
 		if (result.length <= 0) {
@@ -234,8 +233,7 @@ exports.postArticle = (req, res) => {
 			if (articleInfo.is_top === 1) {
 				const topSql1 = "update tb_article set is_top = 1 where id = ?";
 				db.query(topSql1, [result.insertId]);
-				const topSql2 =
-					"update tb_article set is_top = 0 where id != ?";
+				const topSql2 = "update tb_article set is_top = 0 where id != ?";
 				db.query(topSql2, [result.insertId]);
 			}
 			//发布文章后删除现有草稿
@@ -285,16 +283,12 @@ exports.updateArticle = (req, res) => {
 					return res.cc("文章更新失败");
 				}
 				//tag插入tag表中
-				tagList.forEach((element) => {
+				tagList.forEach(element => {
 					const sql = `insert into tb_article_tag set ?`;
-					db.query(
-						sql,
-						{ article_id: articleInfo.id, tag_id: element },
-						(err, resultIn) => {
-							if (err) return res.cc(err);
-							return;
-						}
-					);
+					db.query(sql, { article_id: articleInfo.id, tag_id: element }, (err, resultIn) => {
+						if (err) return res.cc(err);
+						return;
+					});
 				});
 			});
 			if (articleInfo.is_top == 1) {
@@ -303,8 +297,7 @@ exports.updateArticle = (req, res) => {
 					(err, result) => {
 						console.log("result", result);
 					};
-				const topSql2 =
-					"update tb_article set is_top = 0 where id != ?";
+				const topSql2 = "update tb_article set is_top = 0 where id != ?";
 				db.query(topSql2, [articleInfo.id]);
 			}
 			res.send({
@@ -332,8 +325,7 @@ exports.getArticleList = (req, res) => {
 };
 //获取文章部分内容
 exports.getArticlePartList = (req, res) => {
-	const sql =
-		"SELECT id,article_title,create_time,category_id,type,is_top FROM tb_article where is_delete != 1";
+	const sql = "SELECT id,article_title,create_time,category_id,type,is_top FROM tb_article where is_delete != 1";
 	db.query(sql, (err, result) => {
 		if (err) return res.cc(err);
 		if (result.length <= 0) {
